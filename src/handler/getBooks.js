@@ -1,9 +1,10 @@
 const { join } = require('path');
 const { readFile } = require('fs');
 const queryString = require('querystring');
-const getDataFromApi = require('../getBooksFromApi')
+// eslint-disable-next-line no-unused-vars
+const getDataFromApi = require('../getBooksFromApi');
 
-//un comment it to fill books.json file with books data
+// un comment it to fill books.json file with books data
 // getDataFromApi()
 
 const getBooks = (req, res) => {
@@ -15,7 +16,7 @@ const getBooks = (req, res) => {
       return res.end();
     }
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(file);
+    return res.end(file);
   });
 };
 
@@ -29,9 +30,10 @@ const getSearchBook = (req, res) => {
     }
     const searchValue = queryString.parse(req.url.split('?')[1]).q;
     const parseData = JSON.parse(file);
-    const filteredData = parseData.filter((el) =>el.volumeInfo.title.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()))
+    const filteredData = parseData.filter((el) => el.volumeInfo.title.toLocaleLowerCase()
+      .includes(searchValue.toLocaleLowerCase()));
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(filteredData));
+    return res.end(JSON.stringify(filteredData));
   });
 };
 
