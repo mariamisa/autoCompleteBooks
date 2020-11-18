@@ -5,7 +5,7 @@ const queryString = require('querystring');
 const getDataFromApi = require('../getBooksFromApi');
 
 // un comment it to fill books.json file with books data
-// getDataFromApi()
+// getDataFromApi();
 
 const getBooks = (req, res) => {
   const filePath = join(__dirname, '..', 'books.json');

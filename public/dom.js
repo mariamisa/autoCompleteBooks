@@ -23,7 +23,7 @@ function renderData(data) {
     });
   } else {
     const empty = document.createElement('h1');
-    empty.textContent = 'empty data';
+    empty.textContent = 'no result';
     container.appendChild(empty);
   }
 }
